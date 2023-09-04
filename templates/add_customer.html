@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+    
+            min-height: 100vh;
+            background-image: url("{{ url_for('static', filename='builtin/opac.jpg') }}") ;
+            
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .forms {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 400px;
+            text-align: center;
+            height: auto; /* Increase the height to make all input fields the same height */
+        }
+
+        .forms h1 {
+            margin-bottom: 20px;
+        }
+
+        .forms label {
+            display: block;
+            text-align: left;
+            margin-bottom: 5px;
+            font-size: 16px;
+        }
+
+        .forms select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            height: 40px; 
+        }
+
+        .forms button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .forms input {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-bottom: 16px;
+            margin-right: 20px;
+        }
+
+        .forms button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="forms">
+        <form action="/add_customer" id="dev" method="POST">
+            <h1>Customer Details</h1>
+            <label for="cid">Customer ID:</label>
+            <input name="cid" id="cid" placeholder="Customer ID">
+            
+            <label for="cname">Name:</label>
+            <input name="cname" id="cname" placeholder="Customer Name">
+            
+            <label for="phno">Mobile No.:</label>
+            <input name="phno" id="phno" placeholder="Mobile Number">
+            
+            <label for="email">Email Address:</label>
+            <input name="email" id="email" type="email" placeholder="Ex: abc@gmail.com">
+            
+            <label for="nationality">Nationality:</label>
+            <input name="nationality" id="nationality" type="text" placeholder="Nationality">
+            
+            <label for="idtype">Identity Proof:</label>
+            <select id="idtype" name="idtype">
+                <option value="passport">Passport</option>
+                <option value="voter id">Voter ID</option>
+                <option value="adhaar" selected>Aadhaar</option>
+            </select>
+            
+            <label for="idnumber">ID Number:</label>
+            <input name="idnumber" id="idnumber" placeholder="ID Number">
+            
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

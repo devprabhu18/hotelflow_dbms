@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Login</h1>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class="flash-messages">
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+        {% if session.logged_in %}
+            <p>Welcome, you are logged in!</p>
+            <a href="{{ url_for('home') }}">Go to Home Page</a>
+        {% else %}
+            <form action="/" method="post">
+                <label for="email">Email</label><br>
+                <input type="email" class="input-field" id="Email" name="Email" required>
+                <br><br>
+                <label for="password">Password</label><br>
+                <input type="password" class="input-field" id="password" name="password" required>
+                <br><br>
+                <button type="submit" class="login-button">Login</button>
+            </form>
+        {% endif %}
+    </div>
+</body>
+</html>
+
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    
+    min-height: 100vh;
+    background-image: url("{{ url_for('static', filename='builtin/opac.jpg') }}") ;
+            
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+  }
+  
+  .login-container {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+  }
+  
+  .login-container h1 {
+    margin-bottom: 20px;
+  }
+  
+  .input-field {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    margin-right: 10px;
+  }
+  
+  .login-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .login-button:hover {
+    background-color: #0056b3;
+  }
+</style>
+

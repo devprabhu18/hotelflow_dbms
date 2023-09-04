@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+    <style>
+        /* Your styles here */
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background-image: url("{{ url_for('static', filename='builtin/opac.jpg') }}") ;
+            
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            /* Set the background-color with opacity */
+            background-color: rgba(0, 0, 0, 0.7); /* Adjust the alpha value (0.5 for 50% opacity) */
+        }
+
+        .navbar {
+            background-color: #333;
+            overflow: hidden;
+        }
+
+        .navbar a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        .container{
+            display: inline-block;
+        }
+        .text {
+            font-family: 'Russo One', sans-serif;
+            color: black;
+            font-size: 7em;
+            
+            letter-spacing: 10px;
+            width:100%;
+            white-space: nowrap;
+            overflow: hidden;
+            animation: 
+                typing 2s steps(10),
+                cursor .4s step-end infinite alternate;
+        }
+
+        @keyframes typing{
+            from { width:0 }
+        }
+        .container {
+            text-align: center; 
+            line-height: 75vh; 
+            width: 200vh;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="{{ url_for('add_room') }}">Manage Rooms</a>
+        <a href="{{ url_for('add_customer') }}">Add Customers</a>
+        <a href="{{ url_for('make_reservation') }}">Reservation</a>
+        <a href="{{ url_for('reservation_data') }}">Reservation Data</a>
+    </div>
+    <div class="container">
+        <p class="text">Hotel Flow</p>
+    </div>
+    
+</body>
+</html>

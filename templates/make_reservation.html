@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f1f1f1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        
+        .forms {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 300px;
+            text-align: center;
+        }
+        
+        .forms h1 {
+            margin-bottom: 20px;
+        }
+        
+        .forms label {
+            display: inline-block;
+            width: 100px;
+            text-align: left;
+        }
+        
+        .forms input[type="text"], .forms input[type="date"] {
+            width: calc(100% - 110px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        .forms button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        
+        .forms button:hover {
+            background-color: #0056b3;
+        }
+        .rcbx{
+            margin-left: 100px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="forms">
+        <form action="/make_reservation" method="POST">
+            <h1>Reservation</h1>
+            <label for="reservationid">Reservation ID</label>&nbsp;
+            <input name="reservationid" id="reservationid" placeholder="Reservation ID">
+            <br><br>
+            <label for="noofguests">No. of Guests</label>&nbsp;
+            <input name="noofguests" id="noofguests" placeholder="No. of Guests">
+            <br><br>
+            <label for="customerid">Customer ID</label>&nbsp;
+            <input name="customerid" id="customerid" placeholder="Customer ID">
+            <br><br>
+            <label for="roomid">Room ID</label>&nbsp;
+            <input name="roomid" id="roomid" placeholder="Room ID">
+            <br><br>
+            <label for="checkin">Check-in Date</label>&nbsp;
+            <input type="date" name="checkin" id="checkin">
+            <br><br>
+            <label for="checkout">Check-out Date</label>&nbsp;
+            <input type="date" name="checkout" id="checkout">
+            <br><br>
+            <button type="submit">Make Reservation</button>
+        </form>
+    </div>
+    
+    <div class="rcbx">
+        <h2>Available Rooms</h2>
+        <table>
+            <tr>
+                <th>Room ID</th>
+                <th>Room Type</th>
+                <th>Bed Type</th>
+            </tr>
+            {% for room in available_rooms %}
+            <tr>
+                <td>{{ room[0] }}</td>
+                <td>{{ room[1] }}</td>
+                <td>{{ room[2] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>
